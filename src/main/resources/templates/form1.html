@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>form</title>
+</head>
+<body>
+	<form role="form" th:action="@{/simple/confirm}" th:object="${simpleForm}" method="post">
+		<table>
+			<tr>
+	            <th>テキスト入力</th>
+	            <td>
+		            <input type="text" name="ftext" th:field="*{ftext}" />
+		            <span th:if="${#fields.hasErrors('ftext')}" th:errors="*{ftext}">error!</span>
+		        </td>
+	        </tr>
+	        <tr>
+	            <th>string型で日付</th>
+	            <td>
+		            <input type="text" name="ftdate" th:field="*{ftdate}" />
+		            <span th:if="${#fields.hasErrors('ftdate')}" th:errors="*{ftdate}">error!</span>
+	            </td>
+          	</tr> 
+          	<tr>        
+	            <th>LocalDateで日付</th>
+	            <td>
+		            <input type="text" name="fdate" th:field="*{fdate}" />
+		            <span th:if="${#fields.hasErrors('fdate')}" th:errors="*{fdate}">error!</span>  
+	            </td>    
+	        </tr>
+	        <tr>
+	         	<th>String型で数字</th>
+	         	<td>
+		            <input type="text" name="ftnum" th:field="*{ftnum}" />
+		            <span th:if="${#fields.hasErrors('ftnum')}" th:errors="*{ftnum}">error!</span>
+	            </td>
+	         </tr>
+	         <tr>
+	         	<th>Integerで数字</th>
+	         	<td>
+		            <input type="text" name="fnum" th:field="*{fnum}" />
+		            <span th:if="${#fields.hasErrors('fnum')}" th:errors="*{fnum}" class="help-block">error!</span>
+	            </td>
+	         </tr>
+	         <tr>
+	         	<th>Textarea</th>
+	         	<td>
+		            <textarea rows="3" cols="80" name="farea" th:field="*{farea}"></textarea>
+		            <span th:if="${#fields.hasErrors('farea')}" th:errors="*{farea}">error!</span>
+		        </td>
+	         </tr>
+	          
+	        <tr>
+		        <th>チェックボックス</th>
+		        <td> 
+		        								              
+		            <input type="checkbox" name="fchecks" th:each="item : ${checkItems}" th:value="${item.value}" th:text="${item.key}"></input>
+		            		              	         
+		        </td>
+	         </tr>
+	         
+         </table>
+        <button type="submit">confirm</button>
+	</form>
+</body>
+</html>

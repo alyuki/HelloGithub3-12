@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<table th:object="${simpleForm}">
+	<tr>
+            <th>Text (ftext)</th>
+            <td th:text="*{ftext}"></td>
+    </tr>
+    <tr>
+            <th>Stringで日付 (ftdate)</th>
+            <td th:text="*{ftdate}"></td>
+    </tr>
+    <tr>
+            <th>LocalDate (fdate)</th>
+            <td th:text="*{fdate}"></td>
+	</tr>
+	<tr>
+            <th>Stringで数字 (ftnum)</th>
+            <td th:text="*{ftnum}"></td>
+    </tr>
+    <tr>
+            <th>Integer (fnum)</th>
+            <td th:text="*{fnum}"></td>
+    </tr>
+	<tr>
+            <th>Textarea (farea)</th>
+            <td th:utext="*{fareaNl2br}"></td>
+          </tr>
+	
+	
+	<tr>
+            <th>multi checkbox (fchecks)</th>
+           	 <td th:each="c : *{fchecks}" th:text="${c}"></td>
+    </tr>
+	</table>
+	<hr/>
+	<form th:action="@{/simple/}" method="get">		
+        <button type="submit">back form</button>
+	</form>
+</body>
+</html>
